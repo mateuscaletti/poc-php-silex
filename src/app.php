@@ -1,7 +1,5 @@
 <?php
 
-require_once(__DIR__."/config.php");
-
 $loader = require __DIR__.'/../vendor/autoload.php';
 $loader->set('SCF\Silex', __DIR__);
 $loader->set('SCF\Controller', __DIR__);
