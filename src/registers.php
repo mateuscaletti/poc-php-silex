@@ -16,4 +16,8 @@ $app->register(new SCF\Silex\Provider\Models\ModelsServiceProvider(), array(
     'models.basepath' => __DIR__
 ));
 
+$app->register(new SCF\Silex\Provider\Login\LoginServiceProvider(), array(
+    'login.salt' => $SCFconfig['login.salt']
+));
+
 //$app->register(new CorsServiceProvider());

@@ -11,7 +11,6 @@ class LoginServiceProvider implements ServiceProviderInterface
     const AUTH_VALIDATE_TOKEN       = 'auth.validate.token';
     const AUTH_ISVALID_TOKEN       	= 'auth.isvalid.token';
     const AUTH_NEW_TOKEN            = 'auth.new.token';
-    const AUTH_TOKEN_SALT			= '88&mmmasd 1°°,.>>< //12    ((*123nb';
     
     private $app;
     
@@ -55,7 +54,7 @@ class LoginServiceProvider implements ServiceProviderInterface
     }
     
     private function generateSecretKey($apiKey) {
-    	return base64_encode(md5(self::AUTH_TOKEN_SALT.$apiKey));
+    	return base64_encode(md5($this->app['login.salt'].$apiKey));
     }
     
     private function generateExpirationTime() {

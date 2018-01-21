@@ -6,6 +6,13 @@
 	$app->match('/welcome', 'SCF\Controller\WelcomeController::showAction')
 	->method('GET');
 
+	/*
+	 * Validate credentials to authenticate
+	 */
+	$app->match('/welcome-private', 'SCF\Controller\WelcomeController::showAction')
+	->method('GET');
+
+
 
 	/*
 	 * Validate credentials to authenticate
