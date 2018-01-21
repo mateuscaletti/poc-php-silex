@@ -3,7 +3,7 @@ namespace SCF\Silex\Provider\Login;
 
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpFoundation\Request;
-use Silex\ControllerProviderInterface;
+use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 
 class LoginControllerProvider implements ControllerProviderInterface {
@@ -52,7 +52,7 @@ class LoginControllerProvider implements ControllerProviderInterface {
     }
     
     private function isAuthRequiredForPath($path) {
-        return in_array($path, [$this->baseRoute . self::VALIDATE_CREDENTIALS]);
+        return in_array($path, [$this->baseRoute . self::VALIDATE_CREDENTIALS, '/welcome']);
     }
     
     private function isValidTokenForApplication(Application $app, $token, $apiKey) {

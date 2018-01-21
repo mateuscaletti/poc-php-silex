@@ -4,7 +4,7 @@ namespace SCF\Controller;
 use Silex\Application;
 
 class WelcomeController {
-	public function showAction(Request $request, Application $app) {
-		echo 'Welcome to SCF';
+	public function showAction(Application $app) {
+		return 'Welcome to SCF';
 	}	
 }

@@ -3,7 +3,7 @@
 namespace SCF\Silex\Provider\Login;
 
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\ServiceProviderInterface;
 
 class LoginServiceProvider implements ServiceProviderInterface
 {
@@ -15,7 +15,7 @@ class LoginServiceProvider implements ServiceProviderInterface
     
     private $app;
     
-    public function register(Application $app)
+    public function register(\Pimple\Container $app)
     {
     	$this->app = $app;
     	

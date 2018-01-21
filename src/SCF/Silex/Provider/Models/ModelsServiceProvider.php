@@ -3,13 +3,13 @@
 namespace SCF\Silex\Provider\Models;
 
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\ServiceProviderInterface;
 
 class ModelsServiceProvider implements ServiceProviderInterface {
     
-	public function register(Application $app) {
+	public function register(\Pimple\Container $app) {
 		$app['models.basepath'] = array();
-        $app['models'] = $app->share(function($app) {
+        $app['models'] = $app->protect(function() use ($app) {
             return new Models($app);
         });
     }
