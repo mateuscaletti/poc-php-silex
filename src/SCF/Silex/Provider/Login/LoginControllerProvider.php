@@ -35,8 +35,18 @@ class LoginControllerProvider implements ControllerProviderInterface {
     
     private function setUpMiddlewares(Application $app) {
         $app->before(function (Request $request) use ($app) {
-            if (!$this->isAuthRequiredForPath($request->getPathInfo())) {
+	    
+	    $app['monolog']->debug('Verificando se o path "'.$request->getPathInfo().'" requer autenticação');
+
+            if ($this->isAuthRequiredForPath($request->getPathInfo())) {
+		$app['monolog']->debug('Requer autenticação');
+
+		$app['monolog']->debug('Verificando se o token e apikey informados são válidos');
+		$app['monolog']->debug('header['.self::TOKEN_HEADER_KEY.'] = '.$this->getTokenFromRequest($request));
+		$app['monolog']->debug('header['.self::API_HEADER_KEY.'] = '.$this->getApiKeyFromRequest($request));
+
                 if (!$this->isValidTokenForApplication($app, $this->getTokenFromRequest($request), $this->getApiKeyFromRequest($request))) {
+		    $app['monolog']->debug('Token ou ApiKey não são válidos. Autenticação negada.');
                     throw new AccessDeniedHttpException('Access denied', null, '10.999');
                 }
             }
@@ -52,7 +62,7 @@ class LoginControllerProvider implements ControllerProviderInterface {
     }
     
     private function isAuthRequiredForPath($path) {
-        return in_array($path, [$this->baseRoute . self::VALIDATE_CREDENTIALS, '/welcome']);
+        return !in_array($path, [$this->baseRoute . self::VALIDATE_CREDENTIALS, '/welcome']);
     }
     
     private function isValidTokenForApplication(Application $app, $token, $apiKey) {

@@ -21,6 +21,10 @@ $app = new SCF\Silex\Application();
 $app['debug'] = $SCFconfig['debug'];
 
 require_once(__DIR__."/registers.php");
+
+$app['monolog']->debug('Iniciando a aplicação');
+$app['monolog']->debug('Modo Debug = '.$app['debug']);
+
 require_once(__DIR__."/controllers.php");	
 	
 return $app;

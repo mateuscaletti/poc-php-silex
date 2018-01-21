@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Error: destination not provided"
+	exit 1
+fi
+
+echo "Deploy da aplicação iniciando..."
+DEST="/var/www/html/$1"
+echo "Destino: $DEST"
+
+echo
+
+echo "Limpando o destino $DEST"
+rm -rf $DEST
+
+echo
+
+echo "Preparando o destino $DEST"
+mkdir $DEST
+
+echo
+
+echo "Copiando arquivos para o destino"
+cp -R ./web $DEST
+cp -R ./src $DEST
+cp -R ./config $DEST
+cp -R ./vendor $DEST
+rm -rf $DEST/src/console.php
+mkdir $DEST/var
+mkdir $DEST/var/logs
+mkdir $DEST/var/cache
+mkdir $DEST/var/cache/profiler
+chmod -R 777 $DEST/var/logs
+
+
+echo
+
+
