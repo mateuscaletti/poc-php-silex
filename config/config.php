@@ -10,10 +10,10 @@ $SCFconfig['db.dbhost'] = 'localhost';
 
 $SCFconfig['db.host'] = 'localhost';
 
-$SCFconfig['db.dbname'] = 'mafiaovo';
+$SCFconfig['db.dbname'] = '';
 
-$SCFconfig['db.user'] = 'mafiaovo';
+$SCFconfig['db.user'] = '';
 
-$SCFconfig['db.password'] = 'mafiaovo';
+$SCFconfig['db.password'] = '';
 
 $SCFconfig['db.charset'] = 'utf8';
