@@ -23,3 +23,4 @@ $SCFconfig['login.salt'] = getenv('APP_LOGIN_SALT');
 
 $SCFconfig['logs.profiler.enabled'] = getenv('APP_LOGS_PROFILER_ENABLED');
 $SCFconfig['logs.monolog.enabled'] = getenv('APP_LOGS_MONOLOG_ENABLED');
+$SCFconfig['logs.path'] = getenv('APP_LOGS_PATH');

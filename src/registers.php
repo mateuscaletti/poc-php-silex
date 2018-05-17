@@ -5,7 +5,7 @@ use Silex\Provider\WebProfilerServiceProvider;
 
 if($SCFconfig['logs.monolog.enabled']) {
 	$app->register(new MonologServiceProvider(), array(
-	    'monolog.logfile' => __DIR__.'/../var/logs/silex_dev.log',
+	    'monolog.logfile' => $SCFconfig['logs.path'],
 	));
 }
 
